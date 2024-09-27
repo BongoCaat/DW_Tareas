@@ -25,8 +25,7 @@ function App() {
                 <ul className="list-group">
                     {tareas.map((tarea, index) => (
                         <li className="list-group-item list-group-item-action" key={index}>
-                            {/* <span className='tareasList'>{tarea}</span> */}
-                            <input className="tareasList form-check-input me-1" type="checkbox" value={tarea} aria-label={tarea} />
+                            <span className='tareasList'>{tarea}</span>
                             <button id="deleteButton" type="button" className="btn btn-outline-danger">Eliminar</button>
                         </li>
                     ))}
