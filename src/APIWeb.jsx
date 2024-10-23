@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 
-
 function APIWeb() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -10,7 +9,7 @@ function APIWeb() {
         if ((!name || !email) || (name.split(' ').join('').length === 0 || email.split(' ').join('').length === 0)) {
             alert('Por favor, complete todos los campos.');
             return;
-        };
+        }
         const newUser = { name, email };
 
         try {
@@ -49,7 +48,7 @@ function APIWeb() {
         }
     };
 
-    const deleteList = async () => {
+    const deleteUser = async (id) => {
         const secretKey = prompt("Ingrese la clave secreta: ");
         if (secretKey !== process.env.SECRET_KEY) {
             alert("La clave ingresada es incorrecta (Pista: el nombre de mi gato viejo xd)");
@@ -57,16 +56,16 @@ function APIWeb() {
         }
 
         try {
-            const response = await fetch('https://6718464eb910c6a6e02b84fb.mockapi.io/usuarios', {
+            const response = await fetch(`https://6718464eb910c6a6e02b84fb.mockapi.io/usuarios/${id}`, {
                 method: 'DELETE',
             });
             if (response.ok) {
-                setUsers([]);
+                setUsers(users.filter(user => user.id !== id));
             } else {
-                console.log("Hubo un error al intentar borrar la lista de usuarios.")
+                console.log("Hubo un error al intentar borrar el usuario.");
             }
         } catch (error) {
-            console.log("Hubo un error en la solicitud para borrar la lista:", error)
+            console.log("Hubo un error en la solicitud para borrar el usuario:", error);
         }
     }
 
@@ -96,11 +95,13 @@ function APIWeb() {
                 ) : (
                     <div>
                         <ul>
-                        {users.map((user, index) => (
-                            <li key={index}> Usuario : {user.name} - Email: {user.email} </li>
-                        ))};
+                        {users.map((user) => (
+                            <li key={user.id}>
+                                Usuario : {user.name} - Email: {user.email}
+                                <button onClick={() => deleteUser(user.id)}>Eliminar</button>
+                            </li>
+                        ))}
                         </ul>
-                        <button id="deleteList" onClick={deleteList}>Borrar la lista de usuarios</button>
                     </div>
                 )}
             </div>
