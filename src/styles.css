@@ -12,12 +12,21 @@ body {
     sans-serif;
 }
 
+#tareasBox {
+  margin: 1rem;
+}
+
 #tareaHead {
   text-align: center;
   font-weight: bold;
   text-decoration: underline;
   padding: 10px;
   font-weight: 900;
+}
+
+.App {
+  max-height: 90rem;
+  min-height: 60rem;
 }
 
 .nav-text {
@@ -27,11 +36,22 @@ body {
 #header {
   box-shadow: 0px 5px 16px 4px;
   margin-bottom: 20px;
-  line-height: 0;
 }
 
 #footer {
   box-shadow: 0px -5px 16px 4px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.foot-text {
+  font-size: 30px;
+}
+
+.socialSection {
+  display: flex;
+  justify-content: space-around;
 }
 
 #deleteButton {
@@ -54,11 +74,11 @@ body {
 }
 
 .lista-tareas {
-  margin-bottom: 10rem;
-}
-
-#tareasBox {
-  margin: 0 2% 25%;
+  overflow-y: scroll;
+  max-height: 30rem;
+  min-height: 10rem;
+  scrollbar-width: thin;
+  margin-bottom: 5rem;
 }
 
 .name {
