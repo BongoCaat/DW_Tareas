@@ -9,7 +9,7 @@ function App() {
             <div className="App">
                 <Routes>
                     <Route path="/" element={ <TaskList /> } />
-                    <Route path="api-web" element={ <APIWeb /> } />
+                    <Route path="/api-web" element={ <APIWeb /> } />
                 </Routes>
             </div>
         </>

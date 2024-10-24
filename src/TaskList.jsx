@@ -9,7 +9,7 @@ function TaskList() {
     }
 
     const setTarea = () => {
-        if (textValue === '') return;
+        if (textValue.trim() === '') return;
         setTareas([...tareas, textValue])
         setTextValue('')
     }
@@ -18,19 +18,26 @@ function TaskList() {
         setTareas(tareas.filter((tarea, i) => i !== index))
     }
 
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter' && textValue.trim() !== '' ) {
+            setTarea()
+        }
+    }
+    document.addEventListener('keydown', handleKeyDown);
+
     return (
         <>
             <div id="tareasBox">
                 <h1 id="tareaHead">- Lista de Tareas -</h1>
                 <div className="input-group mb-3">
-                    <input type="text" value={textValue} onChange={handleTextChange} className="form-control" placeholder="Ingrese una tarea" aria-label="Ingrese una Tarea" />
+                    <input type="text" value={textValue} maxLength={200} onChange={handleTextChange} className="form-control" placeholder="Ingrese una tarea" aria-label="Ingrese una Tarea" />
                         <button onClick={setTarea} className="btn btn-outline-success" type="button" id="addButton">Añadir Tarea</button>
                 </div>
                 <ul className="lista-tareas list-group">
                     {tareas.map((tarea, index) => (
-                        <li className="lista list-group-item list-group-item-action" key={index}>
+                        <li className="lista a b list-group-item list-group-item-action" key={index}>
                             <span className='tareaText'>{tarea}</span>
-                            <a onClick={() => deleteTarea(index)} id="deleteButton" type="button" className="btn btn-outline-danger"><i className='bx bxs-trash bx-md'></i></a>
+                            <a onClick={() => deleteTarea(index)} type="button" className="btn btn-outline-danger"><i className='bx bxs-trash bx-md'></i></a>
                         </li>
                     ))}
                     </ul>

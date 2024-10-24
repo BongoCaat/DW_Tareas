@@ -6,7 +6,7 @@ function APIWeb() {
     const [users, setUsers] = useState([]);
 
     const addUser = async () => {
-        if ((!name || !email) || (name.split(' ').join('').length === 0 || email.split(' ').join('').length === 0)) {
+        if (!name.trim() || !email.trim()) {
             alert('Por favor, complete todos los campos.');
             return;
         }
@@ -76,29 +76,30 @@ function APIWeb() {
     return (
         <>
             <div id="FormUser">
-                <h1>Agregar Usuario</h1>
+                <h1 className="textoHead1 mb-2">Formulario</h1>
 
-                <label htmlFor="name">Nombre: </label>
-                <input id="name" type="text" value={name} onChange={(e) => setName(e.target.value)} />
+                <label  className="labText" htmlFor="name">Nombre: </label>
+                <input id="name" className="form-control" type="text" value={name} maxLength={50} placeholder="Nombre" onChange={(e) => setName(e.target.value)} />
 
-                <label htmlFor="email">Email: </label>
-                <input id="email" type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
+                <label  className="labText" htmlFor="email">Email: </label>
+                <input id="email" className="form-control" type="email" value={email} maxLength={50} placeholder="correo@gmail.com" onChange={(e) => setEmail(e.target.value)} />
 
-                <button onClick={addUser}>Agregar Usuario</button>
+                <button className="btn btn-outline-primary" onClick={addUser}>Agregar Usuario</button>
             </div>
 
             <div id="ListUsers">
-                <h1>Lista de Usuarios</h1>
-                <h3>Base de usuarios : <a>https://6718464eb910c6a6e02b84fb.mockapi.io/usuarios</a></h3>
+                <h1 className="textoHead1 mt-4">Lista de Usuarios</h1>
+                <h3><a className="name link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="https://6718464eb910c6a6e02b84fb.mockapi.io/usuarios" target="_blank">Base de datos</a></h3>
                 {users.length === 0 ? (
-                    <p>No hay usuarios en la lista.</p>
+                    <p style={{fontSize: '24px'}}>No hay usuarios en la lista.</p>
                 ) : (
-                    <div>
-                        <ul>
+                    <div id="listaCont">
+                        <ul className="lista-tareas list-group list-group-numbered">
                         {users.map((user) => (
-                            <li key={user.id}>
-                                Usuario : {user.name} - Email: {user.email}
-                                <button onClick={() => deleteUser(user.id)}>Eliminar</button>
+                            <li className="lista a b list-group-item list-group-item-action" key={user.id}>
+                                <span className="textSpan">Usuario : {user.name}</span>
+                                <span className="textSpan">Email : {user.email}</span>
+                                <button className="btn btn-outline-danger" onClick={() => deleteUser(user.id)}>Eliminar</button>
                             </li>
                         ))}
                         </ul>

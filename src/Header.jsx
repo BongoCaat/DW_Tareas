@@ -13,7 +13,7 @@ function Header() {
                         <ul className="navbar-nav me-auto" style={{alignItems: "center"}}>
                             <li className="nav-item" style={{fontSize: '24px'}}>
                                 <Link className="nav-link" to="api-web">
-                                    Api Project
+                                    API
                                 </Link>
                             </li>
                         </ul>
