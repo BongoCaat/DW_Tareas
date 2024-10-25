@@ -84,10 +84,7 @@ body {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-
-  &.b {
-    flex-direction: column;
-  }
+  justify-content: center;
 }
 
 .lista-tareas {
