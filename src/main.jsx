@@ -5,10 +5,10 @@ import 'bootswatch/dist/morph/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import 'boxicons/css/boxicons.min.css';
 
-import './styles.css';
-import Header from './Header.jsx';
+import './styles/styles.css';
+import Header from './components/Header.jsx';
 import App from './App.jsx';
-import Footer from './Footer.jsx'
+import Footer from './components/Footer.jsx'
 
 createRoot(document.getElementById('root')).render(
     <BrowserRouter>

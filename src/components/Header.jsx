@@ -1,6 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 function Header() {
+    const styles = {
+        navLink: {
+            fontSize: '24px',
+            margin: '0 1vh',
+        }
+    }
+
     return (
         <>
             <nav id="header" className="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
@@ -9,12 +16,13 @@ function Header() {
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navList" aria-controls="#navList" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
-                    <div id="navList" className="collapse navbar-collapse" >
+                    <div id="navList" className="collapse navbar-collapse">
                         <ul className="navbar-nav me-auto" style={{alignItems: "center"}}>
-                            <li className="nav-item" style={{fontSize: '24px'}}>
-                                <Link className="nav-link" to="api-web">
-                                    API
-                                </Link>
+                            <li className="nav-item" style={styles.navLink}>
+                                <Link className="nav-link" to="/task-list">Tareas</Link>
+                            </li>
+                            <li className="nav-item" style={styles.navLink}>
+                                <Link className="nav-link" to="/api-web">API</Link>
                             </li>
                         </ul>
                     </div>
@@ -22,6 +30,7 @@ function Header() {
             </nav>
         </>
     )
+
 
 };
 
