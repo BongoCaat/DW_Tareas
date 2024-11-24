@@ -8,7 +8,7 @@ import 'boxicons/css/boxicons.min.css';
 import './styles/styles.css';
 import Header from './components/Header.jsx';
 import App from './App.jsx';
-import Footer from './components/Footer.jsx'
+import Footer from './components/Footer.jsx';
 
 createRoot(document.getElementById('root')).render(
     <BrowserRouter>

@@ -10,18 +10,15 @@ function TaskList() {
     };
 
     const setTarea = () => {
-        // console.log(textValue);
         if (textValue.trim() === '') return;
 
         if (updating !== null) {
             const updatedTareas = tareas.map((tarea, index) =>
                 index === updating ? textValue : tarea
             );
-            // console.log("Actualizando Tarea")
             setTareas(updatedTareas);
             setUpdating(null);
         } else {
-            // console.log("Publicando Tarea");
             setTareas([...tareas, textValue]);
         }
 
